@@ -18,6 +18,7 @@ class MVVMTests: XCTestCase {
     
         let sut = try makeSut()
         sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.currentValue, 100)
         XCTAssertEqual(sut.title, "Home")
     }
     func test_ViewDidLoad_ConfiguresTableViews() throws{
@@ -42,7 +43,7 @@ class MVVMTests: XCTestCase {
         wait(for: [exp], timeout: 1)
         XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 200)
     }
-    private func makeSut() throws -> ViewController{
+    private func makeSut() throws -> ViewController {
         let bundle = Bundle(for: ViewController.self)
         let sb = UIStoryboard(name: "Main", bundle: bundle)
         
